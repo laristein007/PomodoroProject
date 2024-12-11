@@ -75,12 +75,12 @@ public class PomodoroTimer implements ActionListener{
 	
 
 	//Time holders
-	//int elapsedTime = 1500000;
-	int elapsedTime = 3000; //For testing
-	//int minutes = 25;
-	int minutes = 0; //For testing
-	//int seconds = 0;
-	int seconds = 3; //For testing
+	int elapsedTime = 1500000; //25 minutes
+	//int elapsedTime = 3000; //For testing, 3 seconds
+	int minutes = 25;
+	//int minutes = 0; //For testing
+	int seconds = 0;
+	//int seconds = 3; //For testing
 	
 	//Flags for timner state
 	boolean started, reset, paused = false;
