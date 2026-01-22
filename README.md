@@ -3,3 +3,10 @@ The UI is inspired by cyber elements, as I find that type of design appealing.
 
 This was built while referencing YouTube videos (BroCode: clock, timer).
 It is still a work in progress as I intend to expand of the features it has.
+
+**CURRENT UI**
+
+![Current Screenshot](https://github.com/laristein007/PomodoroProject/blob/main/Pomodoro.png)
+
+**DEMO**
+![Demo Video](https://github.com/laristein007/PomodoroProject/blob/main/Demo.mp4)
