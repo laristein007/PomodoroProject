@@ -18,14 +18,15 @@ public class PomodoroTimer implements ActionListener{
 	Clip clip;
 	
 	//Variables to store custom font: (Font location, size)
-	Font uiText = loadFont(new File("src/fonts/AudioNugget.ttf"), 65);
-	Font uiTime = loadFont(new File("src/fonts/moonhouse.ttf"), 47);
+	Font uiText = loadFont("/fonts/AudioNugget.ttf", 65f);
+    Font uiTime = loadFont("/fonts/moonhouse.ttf", 47f);
+
 	
 	
 	//Images for buttons
-	ImageIcon startImg = new ImageIcon("src/icons/play.png");
-	ImageIcon pauseImg = new ImageIcon("src/icons/pause.png");
-	ImageIcon resetImg = new ImageIcon("src/icons/restart.png");
+	ImageIcon startImg = new ImageIcon(getClass().getResource("/icons/play.png"));
+	ImageIcon pauseImg = new ImageIcon(getClass().getResource("/icons/pause.png"));
+	ImageIcon resetImg = new ImageIcon(getClass().getResource("/icons/restart.png"));
 	
 	Image originalStartImage = startImg.getImage();  // Get the Image from the ImageIcon
 	Image originalPauseImage = pauseImg.getImage();
@@ -37,7 +38,8 @@ public class PomodoroTimer implements ActionListener{
 	ImageIcon pauseIcon = new ImageIcon((originalPauseImage).getScaledInstance(40, 40, Image.SCALE_SMOOTH));
 	ImageIcon resetIcon = new ImageIcon((originalResetImage).getScaledInstance(40, 40, Image.SCALE_SMOOTH));
 	//Image for HUD
-	ImageIcon hud = new ImageIcon("src/icons/hud.png");
+	ImageIcon hud = new ImageIcon(getClass().getResource("/icons/hud.png"));
+	
 	
 	//Buttons
 	JButton currentStateButton = new JButton(); //Button to set play and pause
@@ -76,7 +78,7 @@ public class PomodoroTimer implements ActionListener{
 
 	//Time holders
 	int elapsedTime = 1500000; //25 minutes
-	//int elapsedTime = 3000; //For testing, 3 seconds
+	//int elapsedTime = 3000; //For testing, 3 seconds countdown
 	int minutes = 25;
 	//int minutes = 0; //For testing
 	int seconds = 0;
@@ -299,18 +301,21 @@ public class PomodoroTimer implements ActionListener{
 	}
 	
 	//method to load font
-	private Font loadFont(File customFile, int size) {
-			Font newFont = null;
-			try {
-				newFont = Font.createFont(Font.TRUETYPE_FONT, customFile);
-				GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-				ge.registerFont(newFont);
-			} catch (FontFormatException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return newFont.deriveFont(Font.PLAIN, size);
-	}
+private Font loadFont(String string, float f) {
+    Font newFont = null;
+    try {
+        newFont = Font.createFont(
+            Font.TRUETYPE_FONT,
+            getClass().getResourceAsStream(string)
+        );
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(newFont);
+    } catch (FontFormatException | IOException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+    }
+    return newFont.deriveFont(Font.PLAIN, f);
+}
 
 	//Method to load sound
 	private void playSound(File soundPath) throws LineUnavailableException {
